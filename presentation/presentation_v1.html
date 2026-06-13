@@ -101,7 +101,7 @@
         }
 
         .content-wrapper {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
             animation: fadeIn 0.5s ease;
         }
@@ -115,7 +115,7 @@
             display: flex;
             justify-content: space-between;
             align-items: flex-end;
-            margin-bottom: 32px;
+            margin-bottom: 24px;
         }
 
         .role-title {
@@ -135,6 +135,57 @@
             align-items: center;
             gap: 6px;
             border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        /* Raw Data Grid */
+        .raw-data-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        .raw-card {
+            background-color: rgba(26, 29, 36, 0.5);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .raw-card h3 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .raw-content {
+            flex: 1;
+            background-color: #121419;
+            border-radius: 8px;
+            padding: 16px;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 0.85rem;
+            line-height: 1.5;
+            color: #94a3b8;
+            white-space: pre-wrap;
+            overflow-y: auto;
+            height: 180px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .raw-content::-webkit-scrollbar {
+            width: 6px;
+        }
+        .raw-content::-webkit-scrollbar-thumb {
+            background-color: #475569;
+            border-radius: 4px;
         }
 
         /* Email Preview Card */
@@ -249,6 +300,7 @@
             padding: 24px;
             position: relative;
             overflow: hidden;
+            margin-bottom: 40px;
         }
         
         .comments-card::after {
@@ -326,6 +378,8 @@
             fullstack: {
                 title: "全端工程師配對",
                 status: "High Match",
+                resumeText: `林志明 (Zhi-Ming Lin)\n聯絡電話：0911-111-111\n電子郵件：zhiming.lin@example.com\n\n【專業技能】\n- 語言與框架：JavaScript/TypeScript, React.js, Vue.js, Node.js, Python (Django/FastAPI)\n- 資料庫與基礎設施：PostgreSQL, MongoDB, Redis, Docker, AWS (EC2, S3, RDS)\n- 工具：Git, CI/CD (GitHub Actions), JIRA\n\n【工作經歷】\n- 2020.08 - 至今 | 全端工程師 @ 雲端軟體科技\n  - 負責開發與維護 SaaS 平台的企業級管理後台，前端使用 React，後端使用 Node.js。\n  - 導入 Redis 快取機制，將高流量的報表頁面載入速度提升 50%。\n  - 透過 Docker 容器化所有微服務，並建置自動化 CI/CD 流程，縮短部署時間。\n- 2018.07 - 2020.07 | 前端工程師 @ 數位行銷公司\n  - 使用 Vue.js 開發多個行銷活動網站，支援高併發流量。\n\n【自我介紹】\n擁有超過五年的網站開發經驗，熟悉從前端到後端的完整開發流程。對於系統架構設計與效能優化有強烈熱忱，善於與設計師及產品經理溝通合作，期望能打造出高效且具備優良使用者體驗的產品。`,
+                jobText: `資深全端工程師 (Senior Full-Stack Engineer)\n\n【職位描述】\n我們正在尋找一位熱血的資深全端工程師加入我們的核心產品團隊。您將負責打造具備高延展性與高效能的 Web 應用程式。我們重視程式碼品質與現代化的開發流程。\n\n【主要職責】\n- 參與產品系統架構規劃與技術選型。\n- 負責前端 (React.js) 與後端 (Node.js/Python) 的功能開發與 API 串接。\n- 實作與維護資料庫結構 (PostgreSQL / Redis)。\n- 部署與監控 AWS 雲端基礎架構，優化 CI/CD 流程。\n- 指導初階工程師，進行 Code Review 確保程式碼品質。\n\n【職位要求】\n- 資訊相關科系畢業，或具備同等實務經驗。\n- 至少 3 年以上 Web 應用程式全端開發經驗。\n- 熟悉 React.js 或 Vue.js，具備深厚的 JavaScript/TypeScript 基礎。\n- 熟悉 Node.js 或 Python (Django/FastAPI) 等後端技術。\n- 熟悉關聯式資料庫設計與效能優化。\n- 具備 AWS (EC2, S3, RDS) 等雲端平台操作經驗者尤佳。\n- 具備良好的團隊合作精神與溝通能力。`,
                 emailPreview: "我們發現您非常適合資深全端工程師一職，您的技能與經驗高度契合我們的職位需求。",
                 generatorReasons: [
                     "您擁有豐富的全端開發經驗，熟練掌握 React.js、Node.js <span class='highlight-del'>與 Python 等技術，完全</span>符合我們的職位要求。",
@@ -341,6 +395,8 @@
             database: {
                 title: "資料庫工程師配對",
                 status: "High Match",
+                resumeText: `陳偉強 (Wei-Qiang Chen)\n聯絡電話：0922-222-222\n電子郵件：weiqiang.chen@example.com\n\n【專業技能】\n- 資料庫系統：MySQL, PostgreSQL, Oracle, MongoDB, Redis\n- 專長領域：SQL 語法優化、高可用性架構 (HA)、資料庫備份與還原災備設計、ETL 資料管線\n- 系統環境：Linux, Shell Scripting, AWS RDS, GCP Cloud SQL\n\n【工作經歷】\n- 2019.03 - 至今 | 資深資料庫管理員 (Senior DBA) @ 大型電商集團\n  - 管理超過 50 個關聯式資料庫實例，維持 99.99% 的系統可用性。\n  - 執行慢查詢 (Slow Query) 分析與優化，成功將核心結帳系統的資料庫負載降低 40%。\n  - 設計並實作跨區容災 (Cross-Region Disaster Recovery) 架構，確保營運資料安全。\n- 2016.05 - 2019.02 | 資料工程師 @ 金融科技新創\n  - 負責建置每日處理百萬筆交易紀錄的 ETL 資料管線。\n\n【自我介紹】\n我專注於資料庫架構設計與效能調校，對於處理海量數據與高併發交易有豐富的實戰經驗。平時密切關注各種新興的資料庫技術與雲端解決方案，期待能將我的專業能力貢獻於貴公司的核心資料基礎架構中。`,
+                jobText: `資料庫管理工程師 (Database Administrator / Engineer)\n\n【職位描述】\n隨著我們平台流量的爆炸性成長，我們需要一位經驗豐富的資料庫工程師來守護我們的資料核心。您將負責設計、維護與優化我們的關聯式與非關聯式資料庫，確保系統穩定與資料安全。\n\n【主要職責】\n- 負責公司內部 MySQL/PostgreSQL 資料庫的日常維運、備份還原與監控。\n- 進行資料庫效能調校 (Performance Tuning)，分析與優化慢查詢 (Slow Queries)。\n- 規劃與建置資料庫高可用性 (High Availability) 與容災 (Disaster Recovery) 架構。\n- 協助開發團隊進行資料庫 Schema 設計與 SQL 語法審查。\n- 評估並導入合適的雲端資料庫解決方案或 NoSQL 資料庫 (如 MongoDB, Redis)。\n\n【職位要求】\n- 至少 3 年以上 DBA 或資料庫工程師經驗。\n- 精通 MySQL 或 PostgreSQL 等關聯式資料庫，熟練掌握各種效能調校技巧。\n- 具備大型分散式資料庫或高併發系統維護經驗。\n- 熟悉 Linux 作業系統，能編寫 Shell Script 進行自動化維運。\n- 對於資料安全與備份策略有深入理解。\n- 細心負責，具備良好的抗壓性與問題解決能力。`,
                 emailPreview: "您深厚的資料庫效能調校經驗，正是我們資料庫管理工程師團隊所需要的關鍵人才！",
                 generatorReasons: [
                     "您擁有超過五年的 DBA 經驗，精通 MySQL、PostgreSQL 以及 Oracle，<span class='highlight-del'>能完美駕馭我們所有的資料庫系統</span>。",
@@ -357,6 +413,8 @@
             uiux: {
                 title: "UI/UX 設計師配對",
                 status: "High Match",
+                resumeText: `張雅婷 (Ya-Ting Chang)\n聯絡電話：0933-333-333\n電子郵件：yating.chang@example.com\n作品集連結：https://portfolio.example.com/yating\n\n【專業技能】\n- 設計工具：Figma, Sketch, Adobe XD, Illustrator, Photoshop\n- 專業領域：使用者研究 (User Research)、易用性測試 (Usability Testing)、Wireframing、Prototyping、Design System 建置\n- 跨團隊協作：熟悉基本 HTML/CSS，能與前端工程師順暢溝通。\n\n【工作經歷】\n- 2021.05 - 至今 | UI/UX 設計師 @ 網路科技平台\n  - 主導公司旗艦 App 的改版設計，透過使用者訪談與 A/B 測試，讓使用者留存率提升 15%。\n  - 從零到一建置且維護團隊的 Design System (Figma Components)，將設計交付效率提升 30%。\n  - 與產品經理密切合作，將模糊的商業需求轉化為清晰的使用者旅程圖 (User Journey Map)。\n- 2019.08 - 2021.04 | 視覺設計師 @ 設計接案公司\n  - 負責多個企業形象網站的介面視覺設計與互動設計。\n\n【自我介紹】\n我是一位熱愛解決問題的產品設計師，相信好的設計能為商業目標與使用者需求找到完美的交集。擅長透過資料與使用者反饋來驅動設計決策，並樂於在敏捷開發環境中與工程團隊緊密合作。`,
+                jobText: `產品 UI/UX 設計師 (Product UI/UX Designer)\n\n【職位描述】\n我們深信卓越的使用者體驗是產品成功的關鍵。我們正在尋找一位充滿創意的 UI/UX 設計師，透過深入洞察使用者需求，為我們的軟體產品打造直覺且美觀的介面。\n\n【主要職責】\n- 負責 Web 與 App 產品的使用者介面設計 (UI) 與互動體驗設計 (UX)。\n- 進行使用者研究、競品分析與可用性測試，並將洞察轉化為設計方案。\n- 繪製 Wireframe, Mockup 與高保真 Prototype (Figma)。\n- 建立並維護產品的 Design System，確保跨平台設計的一致性。\n- 與產品經理 (PM) 及工程團隊緊密協作，確保設計能被高質量地落實。\n\n【職位要求】\n- 至少 2 年以上軟體或網路產品介面設計經驗，投遞履歷請務必附上作品集連結。\n- 精通 Figma 等現代化設計工具，熟悉 Component 與 Auto Layout 運用。\n- 具備扎實的 UX 方法論基礎，能獨立規劃並執行使用者測試。\n- 對於跨螢幕設計 (Responsive Design) 有深入了解。\n- 具備基本的前端知識 (HTML/CSS)，能理解工程實作的限制與可能性。\n- 出色的溝通表達能力，能清晰闡述設計背後的邏輯與決策。`,
                 emailPreview: "您建立 Design System 的實戰經驗與對使用者研究的熱忱，與我們尋找產品 UI/UX 設計師的目標完美契合！",
                 generatorReasons: [
                     "<span class='highlight-del'>您精通前端程式碼 (HTML/CSS/JS)，能夠直接接手工程師的開發工作，大幅提升產品交付速度。</span>",
@@ -383,6 +441,18 @@
                     <div class="status-badge">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
                         ${data.status} (Passed Quality Guard)
+                    </div>
+                </div>
+
+                <!-- Raw Data Grid -->
+                <div class="raw-data-grid">
+                    <div class="raw-card">
+                        <h3><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>求職者履歷 (Original Resume)</h3>
+                        <div class="raw-content">${data.resumeText}</div>
+                    </div>
+                    <div class="raw-card">
+                        <h3><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>職缺描述 (Job Description)</h3>
+                        <div class="raw-content">${data.jobText}</div>
                     </div>
                 </div>
 
