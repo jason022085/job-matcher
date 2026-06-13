@@ -83,7 +83,7 @@ Excellent communication skills with the ability to articulate technical tradeoff
 """
 
 # 設計系統 Prompt 範本 (改為強制輸出 JSON，便於系統串接與儲存)
-PROMPT_TEMPLATE = """你是一位專業的求職配對與招募文案助手。
+PROMPT_TEMPLATE = """現在時間是{current_time}，你是一位專業的求職配對與招募文案助手。
 你的任務是比較求職者的【求職者履歷/個人資料】與【職缺描述】，為發送給求職者的「單一職缺配對推薦電子郵件」生成專屬的客製化內容。
 這些內容只是電子郵件的補充說明，並非郵件的唯一焦點。
 
@@ -183,6 +183,7 @@ def main():
     )
 
     prompt = PROMPT_TEMPLATE.format(
+        current_time=datetime.utcnow().isoformat() + "Z",
         resume_content=resume_content.strip(), 
         job_description=job_description.strip()
     )

@@ -1,0 +1,19 @@
+林志明 (Zhi-Ming Lin)
+聯絡電話：0911-111-111
+電子郵件：zhiming.lin@example.com
+
+【專業技能】
+- 語言與框架：JavaScript/TypeScript, React.js, Vue.js, Node.js, Python (Django/FastAPI)
+- 資料庫與基礎設施：PostgreSQL, MongoDB, Redis, Docker, AWS (EC2, S3, RDS)
+- 工具：Git, CI/CD (GitHub Actions), JIRA
+
+【工作經歷】
+- 2020.08 - 至今 | 全端工程師 @ 雲端軟體科技
+  - 負責開發與維護 SaaS 平台的企業級管理後台，前端使用 React，後端使用 Node.js。
+  - 導入 Redis 快取機制，將高流量的報表頁面載入速度提升 50%。
+  - 透過 Docker 容器化所有微服務，並建置自動化 CI/CD 流程，縮短部署時間。
+- 2018.07 - 2020.07 | 前端工程師 @ 數位行銷公司
+  - 使用 Vue.js 開發多個行銷活動網站，支援高併發流量。
+
+【自我介紹】
+擁有超過五年的網站開發經驗，熟悉從前端到後端的完整開發流程。對於系統架構設計與效能優化有強烈熱忱，善於與設計師及產品經理溝通合作，期望能打造出高效且具備優良使用者體驗的產品。

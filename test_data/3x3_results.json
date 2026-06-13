@@ -1,0 +1,77 @@
+[
+  {
+    "resume_type": "Full-Stack Engineer",
+    "job_type": "Full-Stack Job",
+    "is_high_quality_match": true,
+    "email_preview": "查看為什麼您的全端開發經驗與資深全端工程師職缺完美契合！",
+    "match_reasons": [
+      "您具備超過 5 年的 Web 應用程式開發經驗，並在前一份工作中成功使用 React 與 Node.js 開發企業級管理後台，符合職缺對全端開發經驗的要求。",
+      "您熟悉 PostgreSQL 與 Redis，並曾在過去的工作中導入 Redis 快取機制優化效能，展現您在資料庫設計與效能優化的能力。",
+      "您具備 AWS (EC2, S3) 的操作經驗，並曾使用 Docker 容器化微服務及建置 CI/CD 流程，符合職缺對雲端基礎架構與自動化部署的要求。"
+    ]
+  },
+  {
+    "resume_type": "Full-Stack Engineer",
+    "job_type": "Database Job",
+    "is_high_quality_match": false,
+    "email_preview": "",
+    "match_reasons": []
+  },
+  {
+    "resume_type": "Full-Stack Engineer",
+    "job_type": "UI/UX Job",
+    "is_high_quality_match": false,
+    "email_preview": "",
+    "match_reasons": []
+  },
+  {
+    "resume_type": "Database Engineer",
+    "job_type": "Full-Stack Job",
+    "is_high_quality_match": false,
+    "email_preview": "",
+    "match_reasons": []
+  },
+  {
+    "resume_type": "Database Engineer",
+    "job_type": "Database Job",
+    "is_high_quality_match": true,
+    "email_preview": "查看為什麼您的資料庫管理經驗與資料庫管理工程師職缺完美契合！",
+    "match_reasons": [
+      "您在資料庫管理領域擁有超過3年的豐富經驗，並具備MySQL與PostgreSQL等關聯式資料庫的精湛技能。",
+      "您曾成功優化慢查詢並降低核心系統的資料庫負載，展現了您在資料庫效能調校方面的專業能力。",
+      "您設計並實作了跨區容災架構，確保了營運資料的安全，符合職缺對資料安全與備份策略的深入理解要求。"
+    ]
+  },
+  {
+    "resume_type": "Database Engineer",
+    "job_type": "UI/UX Job",
+    "is_high_quality_match": false,
+    "email_preview": "",
+    "match_reasons": []
+  },
+  {
+    "resume_type": "UI/UX Designer",
+    "job_type": "Full-Stack Job",
+    "is_high_quality_match": false,
+    "email_preview": "",
+    "match_reasons": []
+  },
+  {
+    "resume_type": "UI/UX Designer",
+    "job_type": "Database Job",
+    "is_high_quality_match": false,
+    "email_preview": "",
+    "match_reasons": []
+  },
+  {
+    "resume_type": "UI/UX Designer",
+    "job_type": "UI/UX Job",
+    "is_high_quality_match": true,
+    "email_preview": "查看為什麼您的 UI/UX 設計經驗與產品 UI/UX 設計師職缺完美契合！",
+    "match_reasons": [
+      "您在 UI/UX 設計領域擁有豐富的經驗，曾主導公司旗艦 App 的改版設計並提升使用者留存率 15%，展現出色的設計實力。",
+      "您精通 Figma 等現代化設計工具，並具備建置與維護 Design System 的經驗，能確保跨平台設計的一致性。",
+      "您具備扎實的 UX 方法論基礎，能獨立規劃並執行使用者測試，且具備基本的前端知識 (HTML/CSS)，能與工程團隊順暢協作。"
+    ]
+  }
+]

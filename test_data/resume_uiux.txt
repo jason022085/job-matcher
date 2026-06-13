@@ -1,0 +1,20 @@
+張雅婷 (Ya-Ting Chang)
+聯絡電話：0933-333-333
+電子郵件：yating.chang@example.com
+作品集連結：https://portfolio.example.com/yating
+
+【專業技能】
+- 設計工具：Figma, Sketch, Adobe XD, Illustrator, Photoshop
+- 專業領域：使用者研究 (User Research)、易用性測試 (Usability Testing)、Wireframing、Prototyping、Design System 建置
+- 跨團隊協作：熟悉基本 HTML/CSS，能與前端工程師順暢溝通。
+
+【工作經歷】
+- 2021.05 - 至今 | UI/UX 設計師 @ 網路科技平台
+  - 主導公司旗艦 App 的改版設計，透過使用者訪談與 A/B 測試，讓使用者留存率提升 15%。
+  - 從零到一建置且維護團隊的 Design System (Figma Components)，將設計交付效率提升 30%。
+  - 與產品經理密切合作，將模糊的商業需求轉化為清晰的使用者旅程圖 (User Journey Map)。
+- 2019.08 - 2021.04 | 視覺設計師 @ 設計接案公司
+  - 負責多個企業形象網站的介面視覺設計與互動設計。
+
+【自我介紹】
+我是一位熱愛解決問題的產品設計師，相信好的設計能為商業目標與使用者需求找到完美的交集。擅長透過資料與使用者反饋來驅動設計決策，並樂於在敏捷開發環境中與工程團隊緊密合作。
