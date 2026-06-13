@@ -1,2 +1,3 @@
 product_requirement.txt
 .env
+*.pyc
