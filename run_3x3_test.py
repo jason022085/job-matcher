@@ -6,30 +6,9 @@ from dotenv import load_dotenv
 from openai import OpenAI
 
 # 載入主程式的模組
-from main import PROMPT_TEMPLATE, read_file, OPENROUTER_API_KEY, OPENROUTER_MODEL
+from main import read_file, OPENROUTER_API_KEY, process_dual_llm_match
 
 logging.basicConfig(level=logging.INFO, format="[%(levelname)s] %(message)s")
-
-def evaluate_match(resume_path, job_path, client):
-    """執行單一配對測試"""
-    resume_content = read_file(resume_path, "", "履歷")
-    job_description = read_file(job_path, "", "職缺描述")
-    
-    prompt = PROMPT_TEMPLATE.format(
-        resume_content=resume_content.strip(), 
-        job_description=job_description.strip()
-    )
-    
-    try:
-        response = client.chat.completions.create(
-            model=OPENROUTER_MODEL,
-            messages=[{"role": "user", "content": prompt}],
-            response_format={"type": "json_object"},
-            temperature=0.0
-        )
-        return json.loads(response.choices[0].message.content)
-    except Exception as e:
-        return {"error": str(e)}
 
 def main():
     if not OPENROUTER_API_KEY:
@@ -57,7 +36,12 @@ def main():
     for r_name, r_path in resumes.items():
         for j_name, j_path in jobs.items():
             logging.info(f"正在測試: [履歷] {r_name} -> [職缺] {j_name}")
-            match_data = evaluate_match(r_path, j_path, client)
+            
+            resume_content = read_file(r_path, "", "履歷")
+            job_description = read_file(j_path, "", "職缺描述")
+            
+            # 使用雙模型架構進行測試
+            match_data = process_dual_llm_match(resume_content, job_description, client)
             
             # 將結果記錄到陣列中
             results.append({
@@ -65,7 +49,9 @@ def main():
                 "job_type": j_name,
                 "is_high_quality_match": match_data.get("is_high_quality_match", False),
                 "email_preview": match_data.get("email_preview", ""),
-                "match_reasons": match_data.get("match_reasons", [])
+                "match_reasons": match_data.get("match_reasons", []),
+                "generator_original_reasons": match_data.get("generator_original_reasons", []),
+                "evaluator_comments": match_data.get("evaluator_comments", "")
             })
             
             # 避免觸發 API Rate Limit，每次呼叫後暫停 2 秒
@@ -76,7 +62,7 @@ def main():
     with open(output_file, "w", encoding="utf-8") as f:
         json.dump(results, f, ensure_ascii=False, indent=2)
         
-    logging.info(f"✅ 3x3 矩陣測試完成！結果已儲存至 {output_file}")
+    logging.info(f"✅ 3x3 雙模型驗證矩陣測試完成！結果已儲存至 {output_file}")
 
 if __name__ == "__main__":
     main()

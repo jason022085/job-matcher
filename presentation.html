@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 招募配對系統 | 雙模型驗證展示</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0f1115;
+            --bg-panel: #1a1d24;
+            --bg-card: #232730;
+            --accent: #3b82f6;
+            --accent-glow: rgba(59, 130, 246, 0.5);
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: #334155;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 280px;
+            background-color: var(--bg-panel);
+            border-right: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            padding: 24px 0;
+        }
+
+        .sidebar-header {
+            padding: 0 24px 24px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 16px;
+        }
+
+        .sidebar-header h1 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #60a5fa, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 4px;
+        }
+
+        .sidebar-header p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .nav-item {
+            padding: 16px 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-muted);
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .nav-item:hover {
+            background-color: rgba(255, 255, 255, 0.03);
+            color: var(--text-main);
+        }
+
+        .nav-item.active {
+            background-color: rgba(59, 130, 246, 0.1);
+            color: var(--accent);
+            border-left: 3px solid var(--accent);
+            font-weight: 600;
+        }
+
+        .nav-icon {
+            font-size: 1.2rem;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 40px;
+            position: relative;
+        }
+
+        .content-wrapper {
+            max-width: 1000px;
+            margin: 0 auto;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .header-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 32px;
+        }
+
+        .role-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .status-badge {
+            background-color: rgba(16, 185, 129, 0.15);
+            color: var(--success);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        /* Email Preview Card */
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 4px;
+        }
+
+        .card.preview-card::before { background: linear-gradient(90deg, #3b82f6, #8b5cf6); }
+        
+        .card-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .preview-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #e2e8f0;
+            font-style: italic;
+        }
+
+        /* Comparison Grid */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        .col-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .col-card.generator {
+            border-top: 4px solid var(--warning);
+        }
+        
+        .col-card.evaluator {
+            border-top: 4px solid var(--success);
+            box-shadow: 0 0 30px rgba(16, 185, 129, 0.05);
+        }
+
+        .col-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .col-header h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .badge-gen { background: rgba(245, 158, 11, 0.2); color: var(--warning); padding: 4px 8px; border-radius: 6px; font-size: 0.75rem; font-weight: 600; }
+        .badge-eval { background: rgba(16, 185, 129, 0.2); color: var(--success); padding: 4px 8px; border-radius: 6px; font-size: 0.75rem; font-weight: 600; }
+
+        .reasons-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .reason-item {
+            position: relative;
+            padding-left: 20px;
+            line-height: 1.5;
+            color: #cbd5e1;
+            font-size: 0.95rem;
+        }
+
+        .reason-item::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--text-muted);
+        }
+
+        .generator .reason-item { color: #94a3b8; }
+        .evaluator .reason-item { color: #f8fafc; }
+
+        /* Evaluator Comments */
+        .comments-card {
+            background: linear-gradient(145deg, #1e222a, #232730);
+            border: 1px solid #475569;
+            border-radius: 16px;
+            padding: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .comments-card::after {
+            content: '🛡️';
+            position: absolute;
+            right: 20px;
+            bottom: -10px;
+            font-size: 5rem;
+            opacity: 0.05;
+        }
+
+        .comments-card .card-label {
+            color: #94a3b8;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .comments-text {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: #cbd5e1;
+        }
+
+        /* Highlight differences */
+        .highlight-del {
+            color: #fca5a5;
+            text-decoration: line-through;
+            background: rgba(239, 68, 68, 0.15);
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+
+        .highlight-add {
+            color: #6ee7b7;
+            background: rgba(16, 185, 129, 0.15);
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h1>AI 招募配對系統</h1>
+            <p>Dual-LLM 架構展示</p>
+        </div>
+        
+        <div class="nav-item active" onclick="loadData('fullstack', this)">
+            <span class="nav-icon">👨‍💻</span>
+            <span>全端工程師配對</span>
+        </div>
+        <div class="nav-item" onclick="loadData('database', this)">
+            <span class="nav-icon">🗄️</span>
+            <span>資料庫工程師配對</span>
+        </div>
+        <div class="nav-item" onclick="loadData('uiux', this)">
+            <span class="nav-icon">🎨</span>
+            <span>UI/UX 設計師配對</span>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="content-wrapper" id="content-container">
+            <!-- Content gets injected here by JS -->
+        </div>
+    </div>
+
+    <script>
+        const db = {
+            fullstack: {
+                title: "全端工程師配對",
+                status: "High Match",
+                emailPreview: "我們發現您非常適合資深全端工程師一職，您的技能與經驗高度契合我們的職位需求。",
+                generatorReasons: [
+                    "您擁有豐富的全端開發經驗，熟練掌握 React.js、Node.js <span class='highlight-del'>與 Python 等技術，完全</span>符合我們的職位要求。",
+                    "<span class='highlight-del'>您有優秀的雲端平台操作經驗，特別是在 AWS 上的實戰經驗，能夠幫助我們優化 CI/CD 流程。</span>",
+                    "您曾經成功導入 Redis 快取機制優化系統性能，並建置自動化 CI/CD 流程，展現出優秀的技術實力和解決問題的能力。"
+                ],
+                evaluatorReasons: [
+                    "您擁有豐富的全端開發經驗，熟練掌握 React.js、Node.js 等技術，符合我們的職位要求。",
+                    "您曾經成功導入 Redis 快取機制優化系統性能，並建置自動化 CI/CD 流程，展現出優秀的技術實力和解決問題的能力。"
+                ],
+                comments: "👉 第一個理由中刪除了 'Python' 與 '完全符合'，因為履歷中雖然提到 Python (Django/FastAPI)，但工作經歷中未明確提及使用 Python 的專案經驗。<br><br>👉 第二個理由被完全刪除，原因是履歷雖提到 AWS，但並未具體說明『實戰經驗』。<br><br>👉 第三個理由被保留，因為它完整反映了履歷中的經歷與成就。"
+            },
+            database: {
+                title: "資料庫工程師配對",
+                status: "High Match",
+                emailPreview: "您深厚的資料庫效能調校經驗，正是我們資料庫管理工程師團隊所需要的關鍵人才！",
+                generatorReasons: [
+                    "您擁有超過五年的 DBA 經驗，精通 MySQL、PostgreSQL 以及 Oracle，<span class='highlight-del'>能完美駕馭我們所有的資料庫系統</span>。",
+                    "您曾將核心系統的資料庫負載降低 40%，<span class='highlight-del'>且熟悉 AWS RDS 與 GCP Cloud SQL 的跨雲架構部署</span>。",
+                    "您熟悉 Linux 與 Shell Scripting，能獨立完成自動化維運<span class='highlight-del'>與所有開發團隊的 Schema 設計審查</span>。"
+                ],
+                evaluatorReasons: [
+                    "您在大型電商集團擔任資深 DBA，具備管理超過 50 個實例的經驗，精通 MySQL 與 PostgreSQL。",
+                    "您具備優秀的效能調校能力，曾將核心結帳系統的資料庫負載降低 40%，與我們對優化慢查詢的需求高度契合。",
+                    "您熟悉 Linux 作業環境與 Shell Scripting，具備開發自動化維運流程的能力。"
+                ],
+                comments: "👉 修改第一個理由：移除 '完美駕馭' 等誇大用語，替換為履歷中真實具備的「超過 50 個實例管理經驗」。<br><br>👉 修改第二個理由：履歷未明確提及『跨雲架構部署』，故剔除該無根據之推論，防止幻覺。<br><br>👉 修改第三個理由：移除『所有開發團隊』等過度延伸字眼，專注並保留其自動化維運的真實經驗。"
+            },
+            uiux: {
+                title: "UI/UX 設計師配對",
+                status: "High Match",
+                emailPreview: "您建立 Design System 的實戰經驗與對使用者研究的熱忱，與我們尋找產品 UI/UX 設計師的目標完美契合！",
+                generatorReasons: [
+                    "<span class='highlight-del'>您精通前端程式碼 (HTML/CSS/JS)，能夠直接接手工程師的開發工作，大幅提升產品交付速度。</span>",
+                    "您曾主導旗艦 App 改版，透過<span class='highlight-add'>使用者</span>研究與 A/B 測試讓<span class='highlight-add'>使用者</span>留存率提升 15%，<span class='highlight-del'>完全</span>符合我們對數據洞察的期待。",
+                    "您具備從零到一建置<span class='highlight-add'>且維護</span> Design System 的經驗，將交付效率提升 30%，<span class='highlight-del'>是帶領我們團隊設計系統的最佳人選</span>。"
+                ],
+                evaluatorReasons: [
+                    "您曾主導旗艦 App 改版，透過使用者研究與 A/B 測試讓使用者留存率提升 15%，展現了優秀的數據洞察力。",
+                    "您具備從零到一建置且維護 Design System 的經驗，將設計交付效率提升 30%，符合我們的跨平台設計需求。"
+                ],
+                comments: "👉 完全刪除第一個理由：履歷中只提到『熟悉基本 HTML/CSS，能與前端順暢溝通』，並未表示『精通 JS 並能接手開發』，生成器產生了嚴重幻覺。<br><br>👉 其餘兩點為履歷中的真實數據與成就，予以保留，但強制刪除過度吹捧的用詞（如『最佳人選』、『完全符合』），使信件語氣更專業且客觀。"
+            }
+        };
+
+        function renderContent(data) {
+            const genReasonsHtml = data.generatorReasons.map(r => `<li class="reason-item">${r}</li>`).join('');
+            const evalReasonsHtml = data.evaluatorReasons.map(r => `<li class="reason-item">${r}</li>`).join('');
+
+            return `
+                <div class="header-section">
+                    <div>
+                        <h2 class="role-title">${data.title}</h2>
+                    </div>
+                    <div class="status-badge">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                        ${data.status} (Passed Quality Guard)
+                    </div>
+                </div>
+
+                <div class="card preview-card">
+                    <div class="card-label">📨 Email Preview (郵件預覽文字)</div>
+                    <div class="preview-text">"${data.emailPreview}"</div>
+                </div>
+
+                <div class="comparison-grid">
+                    <div class="col-card generator">
+                        <div class="col-header">
+                            <h3>Phase 1: 生成器 (Generator)</h3>
+                            <span class="badge-gen">Fast Model</span>
+                        </div>
+                        <ul class="reasons-list">
+                            ${genReasonsHtml}
+                        </ul>
+                    </div>
+
+                    <div class="col-card evaluator">
+                        <div class="col-header">
+                            <h3>Phase 2: 審查器 (Evaluator)</h3>
+                            <span class="badge-eval">Smart Model (Fact-checker)</span>
+                        </div>
+                        <ul class="reasons-list">
+                            ${evalReasonsHtml}
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="comments-card">
+                    <div class="card-label">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                        Fact-Checker Log (審查員過濾日誌)
+                    </div>
+                    <div class="comments-text">
+                        ${data.comments}
+                    </div>
+                </div>
+            `;
+        }
+
+        function loadData(role, element) {
+            // Update active state
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+            element.classList.add('active');
+
+            // Animate transition
+            const container = document.getElementById('content-container');
+            container.style.animation = 'none';
+            container.offsetHeight; // Trigger reflow
+            container.style.animation = 'fadeIn 0.5s ease';
+            
+            // Render content
+            container.innerHTML = renderContent(db[role]);
+        }
+
+        // Init load
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('content-container').innerHTML = renderContent(db.fullstack);
+        });
+    </script>
+</body>
+</html>

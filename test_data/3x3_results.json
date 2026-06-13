@@ -3,75 +3,107 @@
     "resume_type": "Full-Stack Engineer",
     "job_type": "Full-Stack Job",
     "is_high_quality_match": true,
-    "email_preview": "查看為什麼您的全端開發經驗與資深全端工程師職缺完美契合！",
+    "email_preview": "我們發現您非常適合資深全端工程師一職，您的技能與經驗高度契合我們的職位需求。",
     "match_reasons": [
-      "您具備超過 5 年的 Web 應用程式開發經驗，並在前一份工作中成功使用 React 與 Node.js 開發企業級管理後台，符合職缺對全端開發經驗的要求。",
-      "您熟悉 PostgreSQL 與 Redis，並曾在過去的工作中導入 Redis 快取機制優化效能，展現您在資料庫設計與效能優化的能力。",
-      "您具備 AWS (EC2, S3) 的操作經驗，並曾使用 Docker 容器化微服務及建置 CI/CD 流程，符合職缺對雲端基礎架構與自動化部署的要求。"
-    ]
+      "您擁有豐富的全端開發經驗，熟練掌握 React.js、Node.js 等技術，符合我們的職位要求。",
+      "您曾經成功導入 Redis 快取機制優化系統性能，並建置自動化 CI/CD 流程，展現出優秀的技術實力和解決問題的能力。"
+    ],
+    "generator_original_reasons": [
+      "您擁有豐富的全端開發經驗，熟練掌握 React.js、Node.js 與 Python 等技術，完全符合我們的職位要求。",
+      "您有優秀的雲端平台操作經驗，特別是在 AWS 上的實戰經驗，能夠幫助我們優化 CI/CD 流程。",
+      "您曾經成功導入 Redis 快取機制優化系統性能，並建置自動化 CI/CD 流程，展現出優秀的技術實力和解決問題的能力。"
+    ],
+    "evaluator_comments": "第一個理由中刪除了 'Python'，因為履歷中雖然提到 Python (Django/FastAPI)，但工作經歷中未明確提及使用 Python 的專案經驗。 第二個理由中，原本提到 'Python' 等技術也被刪除，原因是履歷中未明確展示相關經驗。第三個理由被保留，因為它完整反映了履歷中的經歷與成就。"
   },
   {
     "resume_type": "Full-Stack Engineer",
     "job_type": "Database Job",
-    "is_high_quality_match": false,
-    "email_preview": "",
-    "match_reasons": []
+    "is_high_quality_match": true,
+    "email_preview": "我們發現您非常適合我們的資料庫管理工程師職位！您的經驗與技能高度契合我們的職位需求。",
+    "match_reasons": [
+      "您有使用 Docker 容器化經驗，並建置自動化 CI/CD 流程，這與我們的資料庫高可用性與容災架構需求相符。",
+      "您曾導入 Redis 快取機制優化系統效能，展現了您在資料庫效能調校與優化方面的能力。"
+    ],
+    "generator_original_reasons": [
+      "您擁有豐富的資料庫經驗，特別是在 PostgreSQL 等關聯式資料庫方面，並且熟悉 MongoDB 等 NoSQL 資料庫。",
+      "您有使用 Docker 容器化經驗，並建置自動化 CI/CD 流程，這與我們的資料庫高可用性與容災架構需求相符。",
+      "您曾導入 Redis 快取機制優化系統效能，展現了您在資料庫效能調校與優化方面的能力。"
+    ],
+    "evaluator_comments": "審查後發現第一條理由中提到 '豐富的資料庫經驗' 與 'PostgreSQL 等關聯式資料庫' 並未在履歷中明確提及，因此剔除。其他兩條理由有相應的履歷佐證，符合真實可驗證原則。"
   },
   {
     "resume_type": "Full-Stack Engineer",
     "job_type": "UI/UX Job",
     "is_high_quality_match": false,
     "email_preview": "",
-    "match_reasons": []
+    "match_reasons": [],
+    "generator_original_reasons": [],
+    "evaluator_comments": ""
   },
   {
     "resume_type": "Database Engineer",
     "job_type": "Full-Stack Job",
     "is_high_quality_match": false,
-    "email_preview": "",
-    "match_reasons": []
+    "email_preview": "您與資深全端工程師職位高度契合，特別是在資料庫和雲端經驗方面",
+    "match_reasons": [],
+    "generator_original_reasons": [
+      "您具備豐富的資料庫經驗，包括 PostgreSQL 和 Redis，符合職位要求的資料庫技能",
+      "您有 AWS 雲端平台操作經驗，與職位要求的雲端基礎架構部署相符",
+      "您曾經負責過高可用性架構設計和資料庫優化，與職位要求的系統架構規劃和技術選型相符"
+    ],
+    "evaluator_comments": "求職者陳偉強的履歷主要聚焦於資料庫管理與優化，缺乏全端開發經驗，不符合資深全端工程師的核心要求。生成的三個推薦理由皆有問題：1. 雖然履歷提到 PostgreSQL 和 Redis，但主要是在資料庫管理角色，而非全端開發；2. 履歷中只有 AWS RDS 經驗，未直接提及 EC2、S3 等其他職缺要求的 AWS 服務；3. 雖然有高可用性架構經驗，但與全端開發的系統架構規劃關聯性不足。整體評估不合格。"
   },
   {
     "resume_type": "Database Engineer",
     "job_type": "Database Job",
-    "is_high_quality_match": true,
-    "email_preview": "查看為什麼您的資料庫管理經驗與資料庫管理工程師職缺完美契合！",
-    "match_reasons": [
-      "您在資料庫管理領域擁有超過3年的豐富經驗，並具備MySQL與PostgreSQL等關聯式資料庫的精湛技能。",
-      "您曾成功優化慢查詢並降低核心系統的資料庫負載，展現了您在資料庫效能調校方面的專業能力。",
-      "您設計並實作了跨區容災架構，確保了營運資料的安全，符合職缺對資料安全與備份策略的深入理解要求。"
-    ]
+    "is_high_quality_match": false,
+    "email_preview": "",
+    "match_reasons": [],
+    "generator_original_reasons": [],
+    "evaluator_comments": ""
   },
   {
     "resume_type": "Database Engineer",
     "job_type": "UI/UX Job",
     "is_high_quality_match": false,
     "email_preview": "",
-    "match_reasons": []
+    "match_reasons": [],
+    "generator_original_reasons": [],
+    "evaluator_comments": "Generator skipped evaluation due to low match quality."
   },
   {
     "resume_type": "UI/UX Designer",
     "job_type": "Full-Stack Job",
     "is_high_quality_match": false,
     "email_preview": "",
-    "match_reasons": []
+    "match_reasons": [],
+    "generator_original_reasons": [],
+    "evaluator_comments": "Generator skipped evaluation due to low match quality."
   },
   {
     "resume_type": "UI/UX Designer",
     "job_type": "Database Job",
     "is_high_quality_match": false,
     "email_preview": "",
-    "match_reasons": []
+    "match_reasons": [],
+    "generator_original_reasons": [],
+    "evaluator_comments": "Generator skipped evaluation due to low match quality."
   },
   {
     "resume_type": "UI/UX Designer",
     "job_type": "UI/UX Job",
     "is_high_quality_match": true,
-    "email_preview": "查看為什麼您的 UI/UX 設計經驗與產品 UI/UX 設計師職缺完美契合！",
+    "email_preview": "您的UI/UX設計經驗與我們的職缺需求高度契合，特別是在使用者研究和Design System建置方面。",
     "match_reasons": [
-      "您在 UI/UX 設計領域擁有豐富的經驗，曾主導公司旗艦 App 的改版設計並提升使用者留存率 15%，展現出色的設計實力。",
-      "您精通 Figma 等現代化設計工具，並具備建置與維護 Design System 的經驗，能確保跨平台設計的一致性。",
-      "您具備扎實的 UX 方法論基礎，能獨立規劃並執行使用者測試，且具備基本的前端知識 (HTML/CSS)，能與工程團隊順暢協作。"
-    ]
+      "您在UI/UX設計方面有豐富的經驗，特別是在使用者研究、易用性測試和Design System建置方面，這與職缺需求高度吻合。",
+      "您精通Figma等現代化設計工具，並具備基本的HTML/CSS知識，能與前端工程師順暢溝通，滿足職缺的技術要求。",
+      "您曾主導公司旗艦App的改版設計，透過使用者訪談與A/B測試提升使用者留存率，並建置Design System提升設計交付效率，這些成果展現了您的設計實力。"
+    ],
+    "generator_original_reasons": [
+      "您在UI/UX設計方面有豐富的經驗，特別是在使用者研究、易用性測試和Design System建置方面，與我們的職缺需求高度吻合。",
+      "您精通Figma等現代化設計工具，並具備基本的HTML/CSS知識，能與前端工程師順暢溝通，滿足我們的技術要求。",
+      "您的作品集展示了您在產品設計方面的優秀成果，特別是在使用者留存率提升和設計交付效率提升方面，展現了您的設計實力和價值。"
+    ],
+    "evaluator_comments": "審查後發現，原有的第三點理由提及作品集，但未直接驗證履歷中的具體內容，因此進行了調整以符合真實可驗證原則。其他兩點理由基本符合要求，但做了微調以更精確反映履歷內容。整體評估合格，求職者的經驗和技能與職缺需求高度相關。"
   }
 ]
